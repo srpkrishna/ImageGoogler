@@ -10,6 +10,6 @@
     &nbsp;&nbsp;&nbsp;ViewModel(VM) - SearchViewModel.swift, ImageViewModel.swift<br />
 
 # TODO:
-  1. Improve test coverage from 57.39% to 100%. Only SearchViewModel unit test case were written.
+  1. Improve test coverage from 57.39% to 100%. Only SearchViewModel unit test cases were written.
   2. Design image cache. Currently ImageViewModel has the image data and these objects are kept until the search query  changes. System may run out of memory due to this.
   3. Localisation of strings. Currently kept as constants.
