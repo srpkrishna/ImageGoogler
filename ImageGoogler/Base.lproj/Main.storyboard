@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FWL-0L-oDo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SearchController" customModule="ImageGoogler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1c-ZF-zD9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TIA-vX-wsk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.117972083285417" green="0.28268157285627066" blue="0.5840552137305699" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b83-J3-ekU">
+                                <rect key="frame" x="10" y="104" width="355" height="553"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qi8-uS-Sx0">
+                                    <size key="itemSize" width="200" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCellIdentifier" id="yL4-NQ-0Un" customClass="ImageCollectionViewCell" customModule="ImageGoogler" customModuleProvider="target">
+                                        <rect key="frame" x="77.5" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXa-My-nok">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error.png" translatesAutoresizingMaskIntoConstraints="NO" id="jSM-73-uod">
+                                                    <rect key="frame" x="75" y="75" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="0WC-j7-0Hc"/>
+                                                        <constraint firstAttribute="width" constant="50" id="6Ds-dS-lR7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dC8-M4-lkM">
+                                                    <rect key="frame" x="90" y="90" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.98903367240565843" blue="0.97280400082024232" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="jSM-73-uod" firstAttribute="centerX" secondItem="yL4-NQ-0Un" secondAttribute="centerX" id="ILr-vT-g6r"/>
+                                            <constraint firstItem="OXa-My-nok" firstAttribute="leading" secondItem="yL4-NQ-0Un" secondAttribute="leading" id="Pnh-UC-Fch"/>
+                                            <constraint firstItem="jSM-73-uod" firstAttribute="centerY" secondItem="yL4-NQ-0Un" secondAttribute="centerY" id="WXJ-qp-ZEg"/>
+                                            <constraint firstAttribute="trailing" secondItem="OXa-My-nok" secondAttribute="trailing" id="XJD-mz-VtH"/>
+                                            <constraint firstItem="dC8-M4-lkM" firstAttribute="centerX" secondItem="yL4-NQ-0Un" secondAttribute="centerX" id="q36-n3-AJD"/>
+                                            <constraint firstItem="OXa-My-nok" firstAttribute="top" secondItem="yL4-NQ-0Un" secondAttribute="top" id="qs3-Zp-bJP"/>
+                                            <constraint firstAttribute="bottom" secondItem="OXa-My-nok" secondAttribute="bottom" id="u81-lb-Csd"/>
+                                            <constraint firstItem="dC8-M4-lkM" firstAttribute="centerY" secondItem="yL4-NQ-0Un" secondAttribute="centerY" id="wLS-Bv-O61"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="errorImageView" destination="jSM-73-uod" id="iGa-yI-p6a"/>
+                                            <outlet property="imageView" destination="OXa-My-nok" id="P3Q-76-oKI"/>
+                                            <outlet property="loaderImageView" destination="dC8-M4-lkM" id="fIP-gp-8jb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b83-J3-ekU" firstAttribute="top" secondItem="e1c-ZF-zD9" secondAttribute="bottom" constant="10" id="2Ez-JN-HPX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b83-J3-ekU" secondAttribute="trailing" constant="10" id="5dm-UG-qq9"/>
+                            <constraint firstItem="e1c-ZF-zD9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KBz-pW-wXA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e1c-ZF-zD9" secondAttribute="trailing" id="Ttq-3S-bBM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b83-J3-ekU" secondAttribute="bottom" constant="10" id="Uzt-va-6BH"/>
+                            <constraint firstItem="e1c-ZF-zD9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zti-N0-j1J"/>
+                            <constraint firstItem="b83-J3-ekU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="p1R-WS-66z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j7P-Pi-iFe"/>
+                    <connections>
+                        <outlet property="imagesCollectionView" destination="b83-J3-ekU" id="Q1u-y4-ISY"/>
+                        <outlet property="infoLabel" destination="e1c-ZF-zD9" id="fkj-fS-gsl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eta-m7-gUd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FWL-0L-oDo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YWP-vo-zig">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YfQ-YB-jm4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Emy-Y2-w4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="-564.46776611694156"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="error.png" width="512" height="512"/>
+    </resources>
+</document>
