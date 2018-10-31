@@ -12,6 +12,15 @@ protocol SearchViewModelDelegate: class {
     func updatedContent()
 }
 
+enum SearchState {
+    case initial
+    case success
+    case failed
+    case loading
+    case noResult
+    case noNewResult
+}
+
 ///   1. SearchViewModel is responsibile for searching flickr with the given search text and creating               ImageViewModel's from ImageModel's
 ///   2. Requires three charatcers minmum to search
 ///   3. Search status will be updated in messageString
@@ -34,6 +43,7 @@ class SearchViewModel {
     var messageString: String = startMessage
     weak var delegate: SearchViewModelDelegate?
     var resultsPageToFetch = 1
+    var searchState = SearchState.initial
     
     /// Use this method to search the flickr database
     ///
@@ -41,25 +51,28 @@ class SearchViewModel {
     func searchImages(for queryString: String) {
         resultsPageToFetch = 1
         getImageModels(for: queryString)
+        searchState = .loading
         messageString = SearchViewModel.loadingMessage
         self.delegate?.updatedContent()
     }
     
     func fetchMoreImages(for queryString: String) {
-        if messageString == SearchViewModel.loadingMessage {
+        if searchState == .loading {
             return
         }
         resultsPageToFetch = resultsPageToFetch + 1
         getImageModels(for: queryString)
+        searchState = .loading
         messageString = SearchViewModel.loadingMessage
         self.delegate?.updatedContent()
     }
     
     /// Clears models and view models. Sets the intial state
     func clearImages() {
-        if messageString == SearchViewModel.startMessage {
+        if searchState == .initial {
             return
         }
+        searchState = .initial
         messageString = SearchViewModel.startMessage
         imageModels.removeAll()
         imageViewModels.removeAll()
@@ -116,11 +129,14 @@ class SearchViewModel {
             self.createImageViewModels(with: models)
             if self.imageModels.count > 0 {
                 if previousCount == self.imageModels.count {
+                    self.searchState = .noNewResult
                     self.messageString =  SearchViewModel.noNewResultsMessage + String(self.imageModels.count)
                 } else {
+                    self.searchState = .success
                     self.messageString = String(self.imageModels.count) + SearchViewModel.infoMessage
                 }
             } else {
+                self.searchState = .noResult
                 self.messageString = SearchViewModel.noResultsMessage
             }
             self.delegate?.updatedContent()
@@ -133,6 +149,7 @@ class SearchViewModel {
     /// - Parameter message: error message to be notified
     func apiError(with message: String) {
         DispatchQueue.main.async {
+            self.searchState = .failed
             self.messageString = message
             self.delegate?.updatedContent()
         }

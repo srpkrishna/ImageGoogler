@@ -63,6 +63,9 @@ extension SearchController: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchViewModel.clearImages()
     }
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchViewModel.clearImages()
+    }
 }
 
 extension SearchController: UICollectionViewDataSource {
@@ -126,7 +129,7 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
 extension SearchController: SearchViewModelDelegate {
     func updatedContent() {
         self.infoLabel.text = searchViewModel.messageString
-        if searchViewModel.messageString != SearchViewModel.loadingMessage {
+        if searchViewModel.searchState != .loading {
              self.imagesCollectionView.reloadData()
         }
     }

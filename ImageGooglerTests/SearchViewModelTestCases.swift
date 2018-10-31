@@ -34,7 +34,7 @@ class SearchViewModelTestCases: XCTestCase {
             }
         }
         
-        if searchVM.imageViewModels.count > 0 &&  searchVM.messageString.contains(SearchViewModel.infoMessage) {
+        if searchVM.imageViewModels.count > 0 &&  searchVM.searchState == .success {
             XCTAssert(true)
         } else {
             XCTFail("Basic search for apples not working")
@@ -53,7 +53,7 @@ class SearchViewModelTestCases: XCTestCase {
             }
         }
         
-        if searchVM.imageViewModels.count > currentCount &&  searchVM.messageString.contains(SearchViewModel.infoMessage) {
+        if searchVM.imageViewModels.count > currentCount &&  searchVM.searchState == .success  {
             XCTAssert(true)
         } else {
             XCTFail("Basic search for apples not working")
@@ -62,12 +62,12 @@ class SearchViewModelTestCases: XCTestCase {
     
     func testClearSearch() {
         searchVM.clearImages()
-        if searchVM.messageString != SearchViewModel.startMessage {
+        if searchVM.searchState != .initial {
             XCTFail("Images not cleared");
         }
-        searchVM.messageString = SearchViewModel.infoMessage
+        searchVM.searchState = .success
         searchVM.clearImages()
-        if searchVM.messageString == SearchViewModel.startMessage {
+        if searchVM.searchState == .initial {
             XCTAssert(true);
         } else {
             XCTFail("Images not cleared");
@@ -85,7 +85,7 @@ class SearchViewModelTestCases: XCTestCase {
             }
         }
         
-        if searchVM.imageViewModels.count == 0 &&  searchVM.messageString == SearchViewModel.noResultsMessage  {
+        if searchVM.imageViewModels.count == 0 &&  searchVM.searchState == .noResult  {
             XCTAssert(true)
         } else {
             XCTFail("Basic search for apples not working")
@@ -122,7 +122,7 @@ class SearchViewModelTestCases: XCTestCase {
                 XCTAssert(true);
             }
         }
-        if searchVM.messageString != SearchViewModel.genericError {
+        if searchVM.searchState != .failed {
             XCTFail("parser failed for no response from flickr")
         }
         XCTAssert(true);
